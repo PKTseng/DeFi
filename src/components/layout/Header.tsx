@@ -1,42 +1,53 @@
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { Search } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
 const Header: React.FC = () => {
-  const location = useLocation()
-
-  const navItems = [
-    { path: '/crypto', name: '加密貨幣' },
-    { path: '/markets', name: '市場' },
+  const headerItems = [
+    { path: '/Cryptocurrencies', name: '加密貨幣' },
+    { path: '/Exchanges', name: '交易所' },
+    { path: '/NFT', name: 'NFT' },
+    { path: '/Portfolio', name: '投資組合' },
   ]
 
-  // 檢查是否在首頁或加密貨幣頁面
-  const isActivePath = (path: string) => {
-    if (path === '/crypto') {
-      return location.pathname === '/crypto' || location.pathname === '/'
-    }
-    return location.pathname === path
-  }
-
   return (
-    <header className="w-full py-4 bg-gray-800 text-green-300 shadow">
-      <div className="container mx-auto flex justify-between items-center px-4">
-        <div className="text-2xl font-bold">CoinMarketCap</div>
-        <nav>
-          <ul className="flex space-x-6">
-            {navItems.map((item) => (
-              <li key={item.path}>
-                <Link
-                  to={item.path}
-                  className={`hover:text-green-100 transition-colors ${
-                    isActivePath(item.path) ? 'font-bold border-b-2 border-green-300' : ''
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+    <header className="sticky top-0 z-50 w-full border-b border-[#222531] bg-[#171924]/80 backdrop-blur-sm">
+      <div className="container mx-auto px-4 py-3">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-8">
+            <Link to={`/`} className="flex items-center gap-2">
+              <span className="text-xl font-bold text-[#8dc647]">CoinGecko</span>
+            </Link>
+            <nav className="hidden md:flex">
+              <ul className="flex items-center gap-6">
+                {headerItems.map((item) => (
+                  <li key={item.path}>
+                    <Link
+                      to={item.path}
+                      className={`text-sm font-medium text-gray-300 hover:text-white hover:text-green-100 transition-colors `}
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="relative hidden md:block">
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search..."
+                className="h-10 w-64 rounded-full bg-[#222531] pl-10 pr-4 text-sm text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#8dc647]/50"
+              />
+            </div>
+            <Button className="rounded-full bg-[#8dc647] px-4 py-2 text-sm font-medium text-white hover:bg-[#7ab33a] focus:outline-none focus:ring-2 focus:ring-[#8dc647]/50">
+              Sign In
+            </Button>
+          </div>
+        </div>
       </div>
     </header>
   )
