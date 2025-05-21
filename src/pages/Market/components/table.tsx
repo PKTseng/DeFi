@@ -59,19 +59,19 @@ export function CoinMarketTable({ data }: { data: GlobalListData }) {
   return (
     <div className="rounded-xl bg-[#222531] p-6">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-bold">Top Cryptocurrencies</h2>
-        <button className="text-sm text-[#8dc647] hover:underline">View All</button>
+        <h2 className="text-xl font-bold">主流加密貨幣</h2>
+        <button className="text-sm text-[#8dc647] hover:underline">檢視全部</button>
       </div>
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
             <tr className="border-b border-[#2c2f3b] text-left text-sm text-gray-400">
               <th className="pb-4 pl-2">#</th>
-              <th className="pb-4">Coin</th>
-              <th className="pb-4 text-right">Price</th>
-              <th className="pb-4 text-right">24h</th>
-              <th className="pb-4 text-right">Market Cap</th>
-              <th className="pb-4 text-right">Dominance</th>
+              <th className="pb-4">幣種</th>
+              <th className="pb-4 text-right">價格</th>
+              <th className="pb-4 text-right">24小時</th>
+              <th className="pb-4 text-right">市值</th>
+              <th className="pb-4 text-right">市佔率</th>
             </tr>
           </thead>
 

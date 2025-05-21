@@ -7,39 +7,39 @@ export function CoinMarketOverview({ data }: { data: GlobalListData }) {
 
   return (
     <div className="rounded-xl bg-[#222531] p-6">
-      <h2 className="mb-4 text-xl font-bold">Market Overview</h2>
+      <h2 className="mb-4 text-xl font-bold">市場總覽</h2>
       <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-5">
         <div className="rounded-lg bg-[#2c2f3b] p-4">
           <div className="flex items-center gap-2 text-sm text-gray-400">
             <Coins className="h-4 w-4" />
-            <span>Cryptocurrencies</span>
+            <span>加密貨幣數量</span>
           </div>
           <p className="mt-2 text-xl font-bold">{formatNumber(data.active_cryptocurrencies)}</p>
         </div>
         <div className="rounded-lg bg-[#2c2f3b] p-4">
           <div className="flex items-center gap-2 text-sm text-gray-400">
             <Globe className="h-4 w-4" />
-            <span>Markets</span>
+            <span>市場數量</span>
           </div>
           <p className="mt-2 text-xl font-bold">{formatNumber(data.markets)}</p>
         </div>
         <div className="rounded-lg bg-[#2c2f3b] p-4">
           <div className="flex items-center gap-2 text-sm text-gray-400">
             <DollarSign className="h-4 w-4" />
-            <span>Market Cap</span>
+            <span>總市值</span>
           </div>
           <p className="mt-2 text-xl font-bold">${formatNumber(data.total_market_cap.usd)}</p>
         </div>
         <div className="rounded-lg bg-[#2c2f3b] p-4">
           <div className="flex items-center gap-2 text-sm text-gray-400">
             <TrendingUp className="h-4 w-4" />
-            <span>24h Volume</span>
+            <span>24小時成交量</span>
           </div>
           <p className="mt-2 text-xl font-bold">${formatNumber(data.total_volume.usd)}</p>
         </div>
         <div className="rounded-lg bg-[#2c2f3b] p-4">
           <div className="flex items-center gap-2 text-sm text-gray-400">
-            <span>24h Change</span>
+            <span>24小時市值變化</span>
           </div>
           <p
             className={`mt-2 flex items-center text-xl font-bold ${

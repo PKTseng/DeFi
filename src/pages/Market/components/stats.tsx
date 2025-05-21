@@ -19,10 +19,10 @@ export function CoinMarketStats({ data }: { data: GlobalListData }) {
   return (
     <div className="rounded-xl bg-[#222531] p-6">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-bold">Market Stats</h2>
+        <h2 className="text-xl font-bold">市場統計</h2>
         <Select value={currency} onValueChange={setCurrency}>
           <SelectTrigger className="w-24 h-8 bg-[#2c2f3b] border-0 text-sm">
-            <SelectValue placeholder="Currency" />
+            <SelectValue placeholder="選擇幣別" />
           </SelectTrigger>
           <SelectContent className="bg-[#2c2f3b] border-[#3a3f50]">
             {currencies.map((c) => (
@@ -36,7 +36,7 @@ export function CoinMarketStats({ data }: { data: GlobalListData }) {
 
       <div className="space-y-4">
         <div className="flex justify-between items-center border-b border-[#2c2f3b] pb-3">
-          <span className="text-sm text-gray-400">Market Cap</span>
+          <span className="text-sm text-gray-400">總市值</span>
           <span className="font-medium">
             {selectedCurrency.symbol}
             {formatNumber(data.total_market_cap[currency])}
@@ -44,7 +44,7 @@ export function CoinMarketStats({ data }: { data: GlobalListData }) {
         </div>
 
         <div className="flex justify-between items-center border-b border-[#2c2f3b] pb-3">
-          <span className="text-sm text-gray-400">24h Volume</span>
+          <span className="text-sm text-gray-400">24小時成交量</span>
           <span className="font-medium">
             {selectedCurrency.symbol}
             {formatNumber(data.total_volume[currency])}
@@ -52,17 +52,17 @@ export function CoinMarketStats({ data }: { data: GlobalListData }) {
         </div>
 
         <div className="flex justify-between items-center border-b border-[#2c2f3b] pb-3">
-          <span className="text-sm text-gray-400">BTC Dominance</span>
+          <span className="text-sm text-gray-400">BTC 市佔率</span>
           <span className="font-medium">{data.market_cap_percentage.btc.toFixed(2)}%</span>
         </div>
 
         <div className="flex justify-between items-center border-b border-[#2c2f3b] pb-3">
-          <span className="text-sm text-gray-400">ETH Dominance</span>
+          <span className="text-sm text-gray-400">ETH 市佔率</span>
           <span className="font-medium">{data.market_cap_percentage.eth.toFixed(2)}%</span>
         </div>
 
         <div className="flex justify-between items-center">
-          <span className="text-sm text-gray-400">Active Cryptocurrencies</span>
+          <span className="text-sm text-gray-400">活躍加密貨幣數量</span>
           <span className="font-medium">{formatNumber(data.active_cryptocurrencies)}</span>
         </div>
       </div>
