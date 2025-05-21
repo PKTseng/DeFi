@@ -3,7 +3,6 @@ import MainLayout from '@/components/layout/mainLayout'
 import Crypto from '@/pages/Crypto'
 import CryptoDetail from '@/pages/CryptoDetail'
 import Markets from '@/pages/Market/index'
-import Global from '@/pages/Global'
 
 const router = createBrowserRouter([
   {
@@ -17,10 +16,6 @@ const router = createBrowserRouter([
       {
         path: 'markets',
         element: <Markets />,
-      },
-      {
-        path: 'global',
-        element: <Global />,
       },
       {
         path: 'crypto',
