@@ -20,7 +20,7 @@ axiosIns.interceptors.request.use(
 axiosIns.interceptors.response.use(
   (response: AxiosResponse) => {
     // 可統一處理回應資料
-    return response
+    return response.data
   },
   (error: unknown) => {
     // 可統一處理錯誤
