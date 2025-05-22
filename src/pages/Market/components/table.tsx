@@ -1,13 +1,13 @@
-import { useQuery } from '@tanstack/react-query'
 import { ArrowDown, ArrowUp, Star, BarChart3 } from 'lucide-react'
-import { getCoinsMarket } from '@/api/coins'
-// import { getCoinsMarketData } from '@/mock/coins/coinList'
+// import { useQuery } from '@tanstack/react-query'
+// import { getCoinsMarket } from '@/api/coins'
+import { getCoinsMarketData } from '@/mock/coins/coinList'
 
 export function CoinMarketTable() {
-  const { data: marketData } = useQuery({
-    queryKey: ['coinsMarket'],
-    queryFn: () => getCoinsMarket({ vs_currency: 'usd', order: 'market_cap_desc', page: 1, per_page: 100 }),
-  })
+  // const { data: marketData } = useQuery({
+  //   queryKey: ['coinsMarket'],
+  //   queryFn: () => getCoinsMarket({ vs_currency: 'usd', order: 'market_cap_desc', page: 1, per_page: 100 }),
+  // })
 
   return (
     <div className="rounded-xl bg-gray-800 p-6">
@@ -33,8 +33,8 @@ export function CoinMarketTable() {
           </thead>
 
           <tbody>
-            {marketData &&
-              marketData.map((item) => (
+            {getCoinsMarketData &&
+              getCoinsMarketData.map((item) => (
                 <tr key={item.id} className="border-b border-[#2c2f3b] hover:bg-[#2c2f3b]/30">
                   {/* 排名 */}
                   <td className="py-4 pl-2 text-sm">
