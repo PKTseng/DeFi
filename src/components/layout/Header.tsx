@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 const Header: React.FC = () => {
   const headerItems = [
     { path: '/market', label: '市場總覽', icon: TrendingUp },
-    { path: '/coins', label: '幣種詳情', icon: Search }, // 點擊幣種進入詳情
+    { path: '/coins', label: '幣種詳情', icon: Search }, // 幣種詳情
     { path: '/portfolio', label: '投資組合', icon: Wallet }, // 個人持倉追蹤
     { path: '/watchlist', label: '關注清單', icon: Star }, // 收藏幣種
   ]
