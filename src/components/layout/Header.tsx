@@ -1,14 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Search, TrendingUp, Wallet, Star } from 'lucide-react'
+import { Search, Flame, DollarSign, Coins, ArrowUpDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 const Header: React.FC = () => {
   const headerItems = [
-    { path: '/market', label: '市場總覽', icon: TrendingUp },
-    { path: '/coins', label: '幣種詳情', icon: Search }, // 幣種詳情
-    { path: '/portfolio', label: '投資組合', icon: Wallet }, // 個人持倉追蹤
-    { path: '/watchlist', label: '關注清單', icon: Star }, // 收藏幣種
+    { path: '/coins', label: '幣種列表', icon: Coins },
+    { path: '/search', label: '搜尋', icon: Search }, // 搜尋功能 - 使用 Search API
+    { path: '/trending', label: '熱門', icon: Flame }, // 熱門幣種 - 使用 Trending API
+    { path: '/prices', label: '價格追蹤', icon: DollarSign }, // 價格追蹤 - 使用 Simple API
+    { path: '/converter', label: '匯率轉換', icon: ArrowUpDown }, // 匯率轉換 - 使用 Exchange Rates API
   ]
 
   return (
