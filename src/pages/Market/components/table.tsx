@@ -1,121 +1,96 @@
-import type { GlobalListData } from '@/types/global'
-import { ArrowDown, ArrowUp, Star } from 'lucide-react'
-import { formatNumber } from '@/utils/helper'
+import { useQuery } from '@tanstack/react-query'
+import { ArrowDown, ArrowUp, Star, BarChart3 } from 'lucide-react'
+import { getCoinsMarket } from '@/api/coins'
+// import { getCoinsMarketData } from '@/mock/coins/coinList'
 
-export function CoinMarketTable({ data }: { data: GlobalListData }) {
-  const topCryptos = Object.entries(data.market_cap_percentage).map(([symbol, percentage]) => {
-    return {
-      symbol: symbol.toUpperCase(),
-      percentage,
-      marketCap: (data.total_market_cap.usd * percentage) / 100,
-      // Mock data for demonstration
-      price:
-        symbol === 'btc'
-          ? 67000
-          : symbol === 'eth'
-          ? 3200
-          : symbol === 'usdt'
-          ? 1
-          : symbol === 'bnb'
-          ? 570
-          : symbol === 'sol'
-          ? 150
-          : symbol === 'usdc'
-          ? 1
-          : symbol === 'xrp'
-          ? 0.5
-          : symbol === 'steth'
-          ? 3190
-          : symbol === 'doge'
-          ? 0.15
-          : symbol === 'ada'
-          ? 0.45
-          : 0,
-      change24h:
-        symbol === 'btc'
-          ? 2.5
-          : symbol === 'eth'
-          ? 1.8
-          : symbol === 'usdt'
-          ? 0.01
-          : symbol === 'bnb'
-          ? -0.5
-          : symbol === 'sol'
-          ? 3.2
-          : symbol === 'usdc'
-          ? 0.02
-          : symbol === 'xrp'
-          ? -1.2
-          : symbol === 'steth'
-          ? 1.7
-          : symbol === 'doge'
-          ? 5.4
-          : symbol === 'ada'
-          ? -0.8
-          : 0,
-    }
+export function CoinMarketTable() {
+  const { data: marketData } = useQuery({
+    queryKey: ['coinsMarket'],
+    queryFn: () => getCoinsMarket({ vs_currency: 'usd', order: 'market_cap_desc', page: 1, per_page: 100 }),
   })
 
   return (
-    <div className="rounded-xl bg-[#222531] p-6">
+    <div className="rounded-xl bg-gray-800 p-6">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-bold">主流加密貨幣</h2>
-        <button className="text-sm text-[#8dc647] hover:underline">檢視全部</button>
+        <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
+          <BarChart3 className="w-8 h-8 text-blue-400" />
+          主流加密貨幣
+        </h2>
       </div>
-      <div className="overflow-x-auto">
-        <table className="w-full">
+      <div className="overflow-x-auto w-full">
+        <table className="w-full min-w-[900px]">
           <thead>
             <tr className="border-b border-[#2c2f3b] text-left text-sm text-gray-400">
-              <th className="pb-4 pl-2">#</th>
-              <th className="pb-4">幣種</th>
-              <th className="pb-4 text-right">價格</th>
-              <th className="pb-4 text-right">24小時</th>
-              <th className="pb-4 text-right">市值</th>
-              <th className="pb-4 text-right">市佔率</th>
+              <th className="pb-4 pr-4 text-right">#</th>
+              <th className="pb-4">貨幣</th>
+              <th className="pb-4 text-right">目前價格</th>
+              <th className="pb-4 text-right">24小時漲跌幅</th>
+              <th className="pb-4 text-right">24小時交易量</th>
+              <th className="pb-4 text-right">24小時最高價</th>
+              <th className="pb-4 text-right">24小時最低價</th>
+              <th className="pb-4 text-right">總市值</th>
             </tr>
           </thead>
 
           <tbody>
-            {topCryptos.map((crypto, index) => (
-              <tr key={crypto.symbol} className="border-b border-[#2c2f3b] hover:bg-[#2c2f3b]/30">
-                <td className="py-4 pl-2 text-sm">
-                  <div className="flex items-center gap-2">
-                    <span>{index + 1}</span>
-                    <Star className="h-4 w-4 text-gray-500 hover:text-yellow-400 cursor-pointer" />
-                  </div>
-                </td>
-                <td className="py-4">
-                  <div className="flex items-center gap-3">
-                    <div className="relative h-8 w-8 rounded-full bg-[#2c2f3b] overflow-hidden">
-                      <div className="absolute inset-0 flex items-center justify-center text-xs font-bold">
-                        {crypto.symbol.charAt(0)}
+            {marketData &&
+              marketData.map((item) => (
+                <tr key={item.id} className="border-b border-[#2c2f3b] hover:bg-[#2c2f3b]/30">
+                  {/* 排名 */}
+                  <td className="py-4 pl-2 text-sm">
+                    <div className="flex items-center gap-2">
+                      <Star className="h-4 w-4 text-gray-500 hover:text-yellow-400 cursor-pointer" />
+                      <span>{item.market_cap_rank}</span>
+                    </div>
+                  </td>
+
+                  {/* 貨幣 */}
+                  <td className="py-4">
+                    <div className="flex items-center gap-3">
+                      <div className="relative h-8 w-8 rounded-full bg-[#2c2f3b] overflow-hidden">
+                        <img src={item.image} alt={item.name} className="w-full h-full object-contain" />
+                      </div>
+                      <div>
+                        <p>
+                          <span className="font-bold mr-2 text-white">{item.name}</span>
+                          <span className="text-[14px] text-gray-400">{item.symbol.toLocaleUpperCase()}</span>
+                        </p>
                       </div>
                     </div>
-                    <div>
-                      <p className="font-medium">{crypto.symbol}</p>
-                      <p className="text-xs text-gray-400">{crypto.symbol}</p>
+                  </td>
+
+                  {/* 目前價格 */}
+                  <td className="py-4 text-right font-medium">${item.current_price.toLocaleString()}</td>
+
+                  {/* 24小時漲跌幅 */}
+                  <td
+                    className={`py-4 text-right font-medium ${
+                      item.price_change_percentage_24h >= 0 ? 'text-green-500' : 'text-red-500'
+                    }`}
+                  >
+                    <div className="flex items-center justify-end">
+                      {item.price_change_percentage_24h >= 0 ? (
+                        <ArrowUp className="mr-1 h-6 w-6" />
+                      ) : (
+                        <ArrowDown className="mr-1 h-6 w-6" />
+                      )}
+                      {Math.abs(item.price_change_percentage_24h).toFixed(2)}%
                     </div>
-                  </div>
-                </td>
-                <td className="py-4 text-right font-medium">
-                  ${crypto.price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-                </td>
-                <td
-                  className={`py-4 text-right font-medium ${crypto.change24h >= 0 ? 'text-green-500' : 'text-red-500'}`}
-                >
-                  <div className="flex items-center justify-end">
-                    {crypto.change24h >= 0 ? (
-                      <ArrowUp className="mr-1 h-3 w-3" />
-                    ) : (
-                      <ArrowDown className="mr-1 h-3 w-3" />
-                    )}
-                    {Math.abs(crypto.change24h).toFixed(2)}%
-                  </div>
-                </td>
-                <td className="py-4 text-right font-medium">${formatNumber(crypto.marketCap)}</td>
-                <td className="py-4 text-right font-medium">{crypto.percentage.toFixed(2)}%</td>
-              </tr>
-            ))}
+                  </td>
+
+                  {/* 24小時交易量 */}
+                  <td className="py-4 text-right font-medium">${item.total_volume.toLocaleString()}</td>
+
+                  {/* 24小時最高價 */}
+                  <td className="py-4 text-right font-medium">${item.high_24h.toLocaleString()}</td>
+
+                  {/* 24小時最低價 */}
+                  <td className="py-4 text-right font-medium">${item.low_24h.toLocaleString()}</td>
+
+                  {/* 總市值 */}
+                  <td className="py-4 text-right font-medium">${item.market_cap.toLocaleString()}</td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>
