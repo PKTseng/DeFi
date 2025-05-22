@@ -1,23 +1,23 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Search } from 'lucide-react'
+import { Search, TrendingUp, Wallet, Star } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 const Header: React.FC = () => {
   const headerItems = [
-    { path: '/Cryptocurrencies', name: '加密貨幣' },
-    { path: '/Exchanges', name: '交易所' },
-    { path: '/NFT', name: 'NFT' },
-    { path: '/Portfolio', name: '投資組合' },
+    { path: '/market', label: '市場總覽', icon: TrendingUp },
+    { path: '/coins', label: '幣種詳情', icon: Search }, // 點擊幣種進入詳情
+    { path: '/portfolio', label: '投資組合', icon: Wallet }, // 個人持倉追蹤
+    { path: '/watchlist', label: '關注清單', icon: Star }, // 收藏幣種
   ]
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#222531] bg-[#171924]/80 backdrop-blur-sm">
-      <div className="container mx-auto px-4 py-3">
+    <header className="sticky top-0 z-50 w-full bg-gradient-to-b from-gray-900/95 via-gray-800/90 to-gray-900/80 backdrop-blur-md shadow-md">
+      <div className="container mx-auto py-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-8">
             <Link to={`/`} className="flex items-center gap-2">
-              <span className="text-xl font-bold text-[#8dc647]">CoinGecko</span>
+              <span className="text-xl font-bold text-[#8dc647] drop-shadow-sm tracking-wide">CoinGecko</span>
             </Link>
             <nav className="hidden md:flex">
               <ul className="flex items-center gap-6">
@@ -25,9 +25,11 @@ const Header: React.FC = () => {
                   <li key={item.path}>
                     <Link
                       to={item.path}
-                      className={`text-sm font-medium text-gray-300 hover:text-white hover:text-green-100 transition-colors `}
+                      className={`flex items-center gap-2 text-sm font-medium text-gray-200 hover:text-[#8dc647]`}
+                      style={{ transitionProperty: 'color, font-weight, transform' }}
                     >
-                      {item.name}
+                      <item.icon className="inline-block h-4 w-4 text-inherit transition-colors duration-200" />
+                      {item.label}
                     </Link>
                   </li>
                 ))}
