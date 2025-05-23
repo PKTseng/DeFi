@@ -18,6 +18,10 @@ const router = createBrowserRouter([
         element: <Markets />,
       },
       {
+        path: 'market',
+        element: <Markets />,
+      },
+      {
         path: 'coins',
         element: <Coins />,
       },

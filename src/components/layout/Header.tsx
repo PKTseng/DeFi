@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Search, Flame, DollarSign, Coins, ArrowUpDown, ExternalLink, Landmark } from 'lucide-react'
+import { Search, Flame, DollarSign, BarChart3, ExternalLink, Landmark } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { useQuery } from '@tanstack/react-query'
@@ -45,6 +45,7 @@ const Header: React.FC = () => {
   }
 
   const headerItems = [
+    { path: '/market', label: '市場總覽', icon: BarChart3 },
     { path: '/exchanges', label: '交易所列表', icon: Landmark },
     { path: '/trending', label: '趨勢與分析', icon: Flame },
     { path: '/nfts', label: 'NFTs', icon: DollarSign },
