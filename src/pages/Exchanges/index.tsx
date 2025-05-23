@@ -21,8 +21,6 @@ function Exchanges() {
     return <div>暫無資料</div>
   }
 
-  // console.log(data)
-
   return (
     <div className=" p-8 max-w-7xl mx-auto">
       <h1 className="text-3xl font-extrabold mb-10 text-[#8dc647] tracking-wide flex items-center gap-3">
