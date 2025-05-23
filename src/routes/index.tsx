@@ -1,12 +1,15 @@
 import { createBrowserRouter } from 'react-router-dom'
 import MainLayout from '@/components/layout/mainLayout'
-import Crypto from '@/pages/Crypto'
-import CryptoDetail from '@/pages/CryptoDetail'
+// import Crypto from '@/pages/Crypto'
+// import CryptoDetail from '@/pages/CryptoDetail'
 import Markets from '@/pages/Market/index'
-import Portfolio from '@/pages/Portfolio/index'
-import WatchList from '@/pages/WatchList/index'
+// import Portfolio from '@/pages/Portfolio/index'
+// import WatchList from '@/pages/WatchList/index'
 import Coins from '@/pages/Coins/index'
 import DetailCoins from '@/pages/DetailCoins/index'
+import Trending from '@/pages/Trending/index'
+import Exchanges from '@/pages/Exchanges/index'
+import Nfts from '@/pages/Nfts/index'
 
 const router = createBrowserRouter([
   {
@@ -18,10 +21,6 @@ const router = createBrowserRouter([
         element: <Markets />,
       },
       {
-        path: 'markets',
-        element: <Markets />,
-      },
-      {
         path: 'coins',
         element: <Coins />,
       },
@@ -30,20 +29,16 @@ const router = createBrowserRouter([
         element: <DetailCoins />,
       },
       {
-        path: 'portfolio',
-        element: <Portfolio />,
+        path: 'trending',
+        element: <Trending />,
       },
       {
-        path: 'watchList',
-        element: <WatchList />,
+        path: 'exchanges',
+        element: <Exchanges />,
       },
       {
-        path: 'crypto',
-        element: <Crypto />,
-      },
-      {
-        path: 'crypto/:id',
-        element: <CryptoDetail />,
+        path: 'nfts',
+        element: <Nfts />,
       },
     ],
   },
