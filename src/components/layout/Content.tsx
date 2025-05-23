@@ -5,7 +5,7 @@ interface ContentProps {
 }
 
 function Content({ children }: ContentProps) {
-  return <main className="flex-1 w-full">{children}</main>
+  return <main>{children}</main>
 }
 
 export default Content
