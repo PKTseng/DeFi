@@ -12,8 +12,8 @@ const HourlyDataChart: React.FC<HourlyDataChartProps> = ({ price }) => {
     const days = ['日', '一', '二', '三', '四', '五', '六']
     return {
       index: index,
-      時間: `第${dayIndex + 1}天`,
-      日期: `週${days[dayIndex % 7]}`,
+      時間: `第 ${dayIndex + 1} 天 ${hour}:00`,
+      日期: `週 ${days[dayIndex % 7]}`,
       小時: hour,
       數值: value,
     }
@@ -46,7 +46,7 @@ const HourlyDataChart: React.FC<HourlyDataChartProps> = ({ price }) => {
       {/* 主圖表 */}
       <div className="rounded-lg shadow-md">
         <ResponsiveContainer width="100%" height={500}>
-          <LineChart data={chartData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+          <LineChart data={chartData} margin={{ top: 5, right: 30, left: 100, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis
               dataKey="時間"
