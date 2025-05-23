@@ -1,25 +1,25 @@
 import { useQuery } from '@tanstack/react-query'
 import { getExchangesList } from '@/api/exchanges'
-// import { exchangesList as data } from '@/mock/exchanges/list'
+import { exchangesList as data } from '@/mock/exchanges/list'
 import { Table, TableCaption, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
 
 function Exchanges() {
-  const { data, isLoading, error } = useQuery({
-    queryKey: ['exchangesList'],
-    queryFn: getExchangesList,
-  })
+  // const { data, isLoading, error } = useQuery({
+  //   queryKey: ['exchangesList'],
+  //   queryFn: getExchangesList,
+  // })
 
-  if (isLoading) {
-    return <div>Loading...</div>
-  }
+  // if (isLoading) {
+  //   return <div>Loading...</div>
+  // }
 
-  if (error) {
-    return <div>Error: {error.message}</div>
-  }
+  // if (error) {
+  //   return <div>Error: {error.message}</div>
+  // }
 
-  if (!data) {
-    return <div>暫無資料</div>
-  }
+  // if (!data) {
+  //   return <div>暫無資料</div>
+  // }
 
   return (
     <div className=" p-8 max-w-7xl mx-auto">
@@ -46,13 +46,16 @@ function Exchanges() {
           <TableBody>
             {data && data.length > 0 ? (
               data.map((item) => (
-                <TableRow key={item.id} className="group">
+                <TableRow
+                  key={item.id}
+                  className="border-b border-gray-700 hover:bg-[#8dc647]/10 hover:text-[#8dc647] transition-colors cursor-pointer group"
+                >
                   <TableCell className="font-mono text-md text-gray-400">{item.trust_score_rank}</TableCell>
                   <TableCell>
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-12 h-12 rounded-full bg-white border-2 border-[#8dc647] shadow group-hover:scale-110 transition-transform"
+                      className="w-12 h-12 rounded-full bg-white shadow group-hover:scale-110 transition-transform"
                     />
                   </TableCell>
                   <TableCell className="font-bold text-white text-md flex items-center gap-2">
@@ -79,7 +82,8 @@ function Exchanges() {
                       href={item.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-blue-400 underline hover:text-blue-600 font-semibold"
+                      className="text-blue-400 hover:text-blue-600 font-semibold focus:outline-none focus:ring-2 focus:ring-blue-300 transition-colors"
+                      style={{ textDecoration: 'none' }}
                     >
                       官網
                     </a>

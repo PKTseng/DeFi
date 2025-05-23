@@ -35,12 +35,13 @@ export function CoinMarketTable() {
             <TableHead className="text-[#8dc647] text-base font-bold text-right">總市值</TableHead>
           </TableRow>
         </TableHeader>
+
         <TableBody>
           {getCoinsMarketData && getCoinsMarketData.length > 0 ? (
             getCoinsMarketData.map((item) => (
               <TableRow
                 key={item.id}
-                className="border-b border-[#2c2f3b] hover:bg-[#8dc647]/10 hover:text-[#8dc647] transition-colors cursor-pointer group"
+                className="border-b border-gray-700 hover:bg-[#8dc647]/10 hover:text-[#8dc647] transition-colors cursor-pointer group"
                 onClick={() => navigate(`/coins/${item.id}`)}
               >
                 {/* 排名 */}
@@ -56,7 +57,7 @@ export function CoinMarketTable() {
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-12 h-12 rounded-full bg-white border-2 border-[#8dc647] shadow group-hover:scale-110 transition-transform"
+                      className="w-12 h-12 rounded-full bg-white shadow group-hover:scale-110 transition-transform"
                     />
                     <div>
                       <p>
