@@ -1,6 +1,7 @@
 import React from 'react'
 import type { NftDetail } from '@/types/trending'
 import { ArrowDown, ArrowUp } from 'lucide-react'
+import Title from '@/components/Title'
 
 interface TrendingNFTsProps {
   nfts: NftDetail[]
@@ -8,9 +9,8 @@ interface TrendingNFTsProps {
 
 const TrendingNFTs: React.FC<TrendingNFTsProps> = ({ nfts }) => (
   <section>
-    <h2 className="text-2xl font-extrabold mb-6 text-[#8dc647] flex items-center gap-2">
-      <span className="inline-block w-2 h-6 bg-[#8dc647] rounded mr-2"></span>熱門 NFT
-    </h2>
+    <Title>熱門 NFT</Title>
+
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
       {nfts.map((nft) => (
         <div

@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { getExchangesList } from '@/api/exchanges'
 import { exchangesList as data } from '@/mock/exchanges/list'
 import { Table, TableCaption, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
+import Title from '@/components/Title'
 
 function Exchanges() {
   // const { data, isLoading, error } = useQuery({
@@ -22,10 +23,8 @@ function Exchanges() {
   // }
 
   return (
-    <div className=" p-8 max-w-7xl mx-auto">
-      <h1 className="text-3xl font-extrabold mb-10 text-[#8dc647] tracking-wide flex items-center gap-3">
-        <span className="inline-block w-2 h-8 bg-[#8dc647] rounded mr-2"></span>交易所列表
-      </h1>
+    <div className="p-8 max-w-7xl mx-auto">
+      <Title>交易所列表</Title>
 
       <div className="rounded-xl bg-gray-800 p-6">
         <Table>

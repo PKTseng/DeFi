@@ -4,6 +4,7 @@ import { formatNumber } from '@/utils/helper'
 // import { getGlobalList } from '@/api/global'
 // import type { GlobalList } from '@/types/global'
 import { globalList as data } from '@/mock/global/global'
+import Title from '@/components/Title'
 
 export function CoinMarketOverview() {
   // const { data, isLoading, error } = useQuery<GlobalList>({
@@ -30,7 +31,7 @@ export function CoinMarketOverview() {
 
   return (
     <div className="rounded-xl">
-      <h1 className="mb-4 text-4xl font-bold">加密貨幣市場總覽</h1>
+      <Title>加密貨幣市場總覽</Title>
       <div className="flex items-center gap-2 mt-2 mb-4">
         <Clock className="w-4 h-4 text-green-400" />
         <span className="text-sm text-green-400">即時更新</span>
@@ -45,7 +46,7 @@ export function CoinMarketOverview() {
             </div>
             <span>加密貨幣數量</span>
           </div>
-          <p className="mt-2 text-xl font-bold">{formatNumber(data.data.active_cryptocurrencies)}</p>
+          <p className="mt-2 text-xl font-bold text-white">{formatNumber(data.data.active_cryptocurrencies)}</p>
         </div>
 
         <div className="rounded-lg bg-gray-800 p-4 border border-gray-700 hover:border-cyan-500 transition-colors">
@@ -55,7 +56,7 @@ export function CoinMarketOverview() {
             </div>
             <span>市場數量</span>
           </div>
-          <p className="mt-2 text-xl font-bold">{formatNumber(data.data.markets)}</p>
+          <p className="mt-2 text-xl font-bold text-white">{formatNumber(data.data.markets)}</p>
         </div>
 
         <div className="rounded-lg bg-gray-800 p-4 border border-gray-700 hover:border-blue-500 transition-colors">
@@ -65,7 +66,7 @@ export function CoinMarketOverview() {
             </div>
             <span>總市值</span>
           </div>
-          <p className="mt-2 text-xl font-bold">${formatNumber(data.data.total_market_cap.usd)}</p>
+          <p className="mt-2 text-xl font-bold text-white">${formatNumber(data.data.total_market_cap.usd)}</p>
         </div>
 
         <div className="rounded-lg bg-gray-800 p-4 border border-gray-700 hover:border-green-500 transition-colors">
@@ -75,7 +76,7 @@ export function CoinMarketOverview() {
             </div>
             <span>24小時成交量</span>
           </div>
-          <p className="mt-2 text-xl font-bold">${formatNumber(data.data.total_volume.usd)}</p>
+          <p className="mt-2 text-xl font-bold text-white">${formatNumber(data.data.total_volume.usd)}</p>
         </div>
 
         <div className="rounded-lg bg-gray-800 p-4 border border-gray-700 hover:border-yellow-500 transition-colors">

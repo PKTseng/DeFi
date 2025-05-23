@@ -5,7 +5,7 @@ import { CoinMarketTable } from '@/pages/Market/components/table'
 
 export default function Home() {
   return (
-    <main className="min-h-screen text-white p-6 container mx-auto">
+    <main className="p-8 max-w-7xl mx-auto">
       <CoinMarketOverview />
 
       {/* <div className="grid grid-cols-3 gap-4 py-8">

@@ -14,13 +14,6 @@ export function CoinMarketTable() {
 
   return (
     <div className="rounded-xl bg-gray-800 p-6">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-2xl font-extrabold mb-6 flex items-center gap-2 text-[#8dc647]">
-          <BarChart3 className="w-8 h-8 text-blue-400" />
-          主流加密貨幣
-        </h2>
-      </div>
-
       <Table>
         <TableCaption className="text-gray-400 text-base pb-4">全球主流加密貨幣市值排行</TableCaption>
         <TableHeader>
