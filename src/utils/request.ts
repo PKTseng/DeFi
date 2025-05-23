@@ -2,7 +2,7 @@ import axios, { type AxiosResponse } from 'axios'
 import type { InternalAxiosRequestConfig } from 'axios'
 
 const axiosIns = axios.create({
-  baseURL: import.meta.env.VITE_APP_BASE_URL,
+  baseURL: import.meta.env.VITE_APP_BASE_URL + import.meta.env.VITE_APP_API_VERSION,
   timeout: 10000,
 })
 
