@@ -1,27 +1,27 @@
 import { useQuery } from '@tanstack/react-query'
 import { getExchangesList } from '@/api/exchanges'
-import { exchangesList as data } from '@/mock/exchanges/list'
+// import { exchangesList as data } from '@/mock/exchanges/list'
 import { Table, TableCaption, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
 
 function Exchanges() {
-  // const { data, isLoading, error } = useQuery({
-  //   queryKey: ['exchangesList'],
-  //   queryFn: getExchangesList,
-  // })
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['exchangesList'],
+    queryFn: getExchangesList,
+  })
 
-  // if (isLoading) {
-  //   return <div>Loading...</div>
-  // }
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
 
-  // if (error) {
-  //   return <div>Error: {error.message}</div>
-  // }
+  if (error) {
+    return <div>Error: {error.message}</div>
+  }
 
-  // if (!data) {
-  //   return <div>暫無資料</div>
-  // }
+  if (!data) {
+    return <div>暫無資料</div>
+  }
 
-  console.log(data)
+  // console.log(data)
 
   return (
     <div className=" p-8 max-w-7xl mx-auto">
