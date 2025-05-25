@@ -1,15 +1,35 @@
 import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import Title from '@/components/Title'
-import { nftDetail as data } from '@/mock/nfts/detail'
+import { getNftsById } from '@/api/nfts'
+import { useQuery } from '@tanstack/react-query'
+// import { nftDetail as data } from '@/mock/nfts/detail'
 
 function NftsDetail() {
   const navigate = useNavigate()
+  const { id } = useParams<{ id: string }>()
 
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
+
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['nftDetail', id],
+    queryFn: () => getNftsById(id as string),
+  })
+
+  if (isLoading) {
+    return <div className="text-center text-gray-400">Loading...</div>
+  }
+
+  if (error) {
+    return <div className="text-center text-red-500">Error: {error.message}</div>
+  }
+
+  if (!data) {
+    return <div className="text-center text-gray-400">Loading...</div>
+  }
 
   return (
     <div className="p-8 max-w-5xl mx-auto">

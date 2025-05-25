@@ -1,4 +1,6 @@
-export const nftDetail = {
+import type { NftDetailResponse } from '@/types/nfts'
+
+export const nftDetail: NftDetailResponse = {
   id: 'autoglyphs',
   web_slug: 'autoglyphs',
   contract_address: '0xd4e4078ca3495de5b1d4db434bebc5a986197782',
