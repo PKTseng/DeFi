@@ -1,16 +1,16 @@
-import { ArrowDown, ArrowUp, Star, BarChart3 } from 'lucide-react'
-// import { useQuery } from '@tanstack/react-query'
-// import { getCoinsMarket } from '@/api/coins'
-import { getCoinsMarketData } from '@/mock/coins/coinList'
+import { ArrowDown, ArrowUp, Star } from 'lucide-react'
+import { useQuery } from '@tanstack/react-query'
+import { getCoinsMarket } from '@/api/coins'
 import { useNavigate } from 'react-router-dom'
 import { Table, TableCaption, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
+// import { getCoinsMarketData as data } from '@/mock/coins/coinList'
 
 export function CoinMarketTable() {
   const navigate = useNavigate()
-  // const { data: marketData } = useQuery({
-  //   queryKey: ['coinsMarket'],
-  //   queryFn: () => getCoinsMarket({ vs_currency: 'usd', order: 'market_cap_desc', page: 1, per_page: 100 }),
-  // })
+  const { data } = useQuery({
+    queryKey: ['coinsMarket'],
+    queryFn: () => getCoinsMarket({ vs_currency: 'usd', order: 'market_cap_desc', page: 1, per_page: 100 }),
+  })
 
   return (
     <div className="rounded-xl bg-gray-800 p-6">
@@ -30,8 +30,8 @@ export function CoinMarketTable() {
         </TableHeader>
 
         <TableBody>
-          {getCoinsMarketData && getCoinsMarketData.length > 0 ? (
-            getCoinsMarketData.map((item) => (
+          {data && data.length > 0 ? (
+            data.map((item) => (
               <TableRow
                 key={item.id}
                 className="border-b border-gray-700 hover:bg-[#8dc647]/10 hover:text-[#8dc647] transition-colors cursor-pointer group"

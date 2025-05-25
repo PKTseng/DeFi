@@ -1,10 +1,13 @@
 import { useQuery } from '@tanstack/react-query'
 import { getNftsList } from '@/api/nfts'
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
+import { useNavigate } from 'react-router-dom'
 import Title from '@/components/Title'
 // import { nftsList as data } from '@/mock/nfts/list'
 
 function Nfts() {
+  const navigate = useNavigate()
+
   const { data, isLoading, error } = useQuery({
     queryKey: ['nftsList'],
     queryFn: getNftsList,
@@ -40,6 +43,7 @@ function Nfts() {
               <TableRow
                 key={item.id}
                 className="border-b border-gray-700 hover:bg-[#8dc647]/10 hover:text-[#8dc647] transition-colors cursor-pointer group"
+                onClick={() => navigate(`/nftsDetail/${item.id}`)}
               >
                 <TableCell className="font-mono text-gray-400 text-base">{idx + 1}</TableCell>
                 <TableCell className="font-bold text-white text-base truncate max-w-[200px]">{item.name}</TableCell>
