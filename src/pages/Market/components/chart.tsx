@@ -57,7 +57,7 @@ export function CoinMarketChart({ data }: { data: GlobalListData }) {
                 formatter: (value: number) => `${value.toFixed(2)}%`,
               }}
             >
-              {dominanceData.map((entry, index) => (
+              {dominanceData.map((_, index) => (
                 <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
               ))}
             </Bar>
