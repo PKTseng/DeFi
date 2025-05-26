@@ -105,9 +105,9 @@ const ExchangeDetail: React.FC = () => {
             <TabsTrigger value="markets" className={tabClass}>
               所有交易對
             </TabsTrigger>
-            <TabsTrigger value="volume" className={tabClass}>
+            {/* <TabsTrigger value="volume" className={tabClass}>
               交易量走勢
-            </TabsTrigger>
+            </TabsTrigger> */}
           </TabsList>
 
           <TabsContent value="overview">
