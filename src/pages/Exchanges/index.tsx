@@ -1,26 +1,27 @@
-import { useQuery } from '@tanstack/react-query'
-import { getExchangesList } from '@/api/exchanges'
 import { Table, TableCaption, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
 import Title from '@/components/Title'
-// import { exchangesList as data } from '@/mock/exchanges/list'
+import { useNavigate } from 'react-router-dom'
+import { exchangesList as data } from '@/mock/exchanges/list'
 
 function Exchanges() {
-  const { data, isLoading, error } = useQuery({
-    queryKey: ['exchangesList'],
-    queryFn: getExchangesList,
-  })
+  const navigate = useNavigate()
 
-  if (isLoading) {
-    return <div>Loading...</div>
-  }
+  // const { data, isLoading, error } = useQuery({
+  //   queryKey: ['exchangesList'],
+  //   queryFn: getExchangeList,
+  // })
 
-  if (error) {
-    return <div>Error: {error.message}</div>
-  }
+  // if (isLoading) {
+  //   return <div>Loading...</div>
+  // }
 
-  if (!data) {
-    return <div>暫無資料</div>
-  }
+  // if (error) {
+  //   return <div>Error: {error.message}</div>
+  // }
+
+  // if (!data) {
+  //   return <div>暫無資料</div>
+  // }
 
   return (
     <div className="p-8 max-w-7xl mx-auto">
@@ -48,6 +49,7 @@ function Exchanges() {
                 <TableRow
                   key={item.id}
                   className="border-b border-gray-700 hover:bg-[#8dc647]/10 hover:text-[#8dc647] transition-colors cursor-pointer group"
+                  onClick={() => navigate(`/exchanges/${item.id}`)}
                 >
                   <TableCell className="font-mono text-md text-gray-400">{item.trust_score_rank}</TableCell>
                   <TableCell>
@@ -57,11 +59,11 @@ function Exchanges() {
                       className="w-12 h-12 rounded-full bg-white shadow group-hover:scale-110 transition-transform"
                     />
                   </TableCell>
-                  <TableCell className="font-bold text-white text-md flex items-center gap-2">
+                  <TableCell className="font-bold text-white text-md gap-2">
                     {item.name}
                     {item.has_trading_incentive && (
-                      <span className="ml-2 px-2 py-0.5 bg-yellow-400 text-xs text-gray-900 rounded-full font-semibold">
-                        獎勵
+                      <span className="ml-2 px-2 py-0.5 bg-orange-500 text-white text-xs rounded-full font-semibold">
+                        交易獎勵
                       </span>
                     )}
                   </TableCell>
@@ -83,6 +85,7 @@ function Exchanges() {
                       rel="noopener noreferrer"
                       className="text-blue-400 hover:text-blue-600 font-semibold focus:outline-none focus:ring-2 focus:ring-blue-300 transition-colors"
                       style={{ textDecoration: 'none' }}
+                      onClick={(e) => e.stopPropagation()}
                     >
                       官網
                     </a>
