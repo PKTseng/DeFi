@@ -1,27 +1,29 @@
 import { Table, TableCaption, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
 import Title from '@/components/Title'
 import { useNavigate } from 'react-router-dom'
-import { exchangesList as data } from '@/mock/exchanges/list'
+import { useQuery } from '@tanstack/react-query'
+import { getExchangeList } from '@/api/exchanges'
+// import { exchangesList as data } from '@/mock/exchanges/list'
 
 function Exchanges() {
   const navigate = useNavigate()
 
-  // const { data, isLoading, error } = useQuery({
-  //   queryKey: ['exchangesList'],
-  //   queryFn: getExchangeList,
-  // })
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['exchangesList'],
+    queryFn: getExchangeList,
+  })
 
-  // if (isLoading) {
-  //   return <div>Loading...</div>
-  // }
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
 
-  // if (error) {
-  //   return <div>Error: {error.message}</div>
-  // }
+  if (error) {
+    return <div>Error: {error.message}</div>
+  }
 
-  // if (!data) {
-  //   return <div>暫無資料</div>
-  // }
+  if (!data) {
+    return <div>暫無資料</div>
+  }
 
   return (
     <div className="p-8 max-w-7xl mx-auto">
