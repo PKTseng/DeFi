@@ -1,13 +1,12 @@
 import { useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import { Button } from '@/components/ui/button'
+import { useParams } from 'react-router-dom'
 import Title from '@/components/Title'
+import ReturnButton from '@/components/ReturnButton'
 import { getNftsById } from '@/api/nfts'
 import { useQuery } from '@tanstack/react-query'
 // import { nftDetail as data } from '@/mock/nfts/detail'
 
 function NftsDetail() {
-  const navigate = useNavigate()
   const { id } = useParams<{ id: string }>()
 
   useEffect(() => {
@@ -33,12 +32,7 @@ function NftsDetail() {
 
   return (
     <div className="p-8 max-w-5xl mx-auto">
-      <Button
-        onClick={() => navigate(`/nfts`)}
-        className="group text-[#8dc647] hover:text-white hover:bg-[#8dc647]/90 border border-[#8dc647] bg-transparent px-4 py-2 rounded-full font-bold flex items-center gap-2 mb-8 shadow transition-all duration-200"
-      >
-        <span className="group-hover:-translate-x-1 transition-transform">←</span> 返回列表
-      </Button>
+      <ReturnButton />
 
       <Title>{`${data.name} 詳細資訊`}</Title>
       <div className="rounded-2xl bg-gradient-to-br from-gray-900/90 to-gray-800/80 p-8 shadow-2xl flex flex-col md:flex-row gap-10 border border-[#8dc647]/10">

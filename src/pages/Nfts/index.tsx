@@ -43,7 +43,7 @@ function Nfts() {
               <TableRow
                 key={item.id}
                 className="border-b border-gray-700 hover:bg-[#8dc647]/10 hover:text-[#8dc647] transition-colors cursor-pointer group"
-                onClick={() => navigate(`/nftsDetail/${item.id}`)}
+                onClick={() => navigate(`/nfts/${item.id}`)}
               >
                 <TableCell className="font-mono text-gray-400 text-base">{idx + 1}</TableCell>
                 <TableCell className="font-bold text-white text-base truncate max-w-[200px]">{item.name}</TableCell>

@@ -1,6 +1,6 @@
 import { BarChart3, ArrowUp, ArrowDown } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { useParams, useNavigate } from 'react-router-dom'
+import ReturnButton from '@/components/ReturnButton'
+import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { getCoinsById } from '@/api/coins'
 import InfoCard from './components/InfoCard'
@@ -8,7 +8,6 @@ import SparkLineChart from './components/SparkLineChart'
 // import { coinsDetail as data } from '@/mock/coins/coinsDetail'
 
 function DetailCoins() {
-  const navigate = useNavigate()
   const { id } = useParams<{ id: string }>()
   const { data, isLoading, error } = useQuery({
     queryKey: ['coinsById', id],
@@ -29,12 +28,7 @@ function DetailCoins() {
 
   return (
     <div className="min-h-screen text-white p-6 container mx-auto">
-      <Button
-        onClick={() => navigate(`/`)}
-        className="group text-[#8dc647] hover:text-white hover:bg-[#8dc647]/90 border border-[#8dc647] bg-transparent px-4 py-2 rounded-full font-bold flex items-center gap-2 mb-8 shadow transition-all duration-200"
-      >
-        <span className="group-hover:-translate-x-1 transition-transform">←</span> 返回列表
-      </Button>
+      <ReturnButton />
 
       <div className="flex items-center gap-8 mb-10 py-6 px-8 rounded-2xl bg-gradient-to-r from-[#23272f] via-gray-900 to-[#23272f] shadow-xl border border-[#8dc647]/30">
         <img
