@@ -12,8 +12,10 @@ import ExchangeSocialLinks from './ExchangeSocialLinks'
 import ExchangeInfo from './ExchangeInfo'
 import ExchangeOtherLinks from './ExchangeOtherLinks'
 import ExchangeAllTickersTable from './ExchangeAllTickersTable'
+// import VolumeChart from './VolumeChart'
 // import { exchangesDetailMock as exchangeDetail } from '@/mock/exchanges/detail'
 // import { exchangeTickers } from '@/mock/exchanges/tickers'
+// import { exchangesVolumeChart } from '@/mock/exchanges/volumeChart'
 
 const ExchangeDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>()
@@ -35,6 +37,18 @@ const ExchangeDetail: React.FC = () => {
     queryKey: ['exchangeTickers', id],
     queryFn: () => getExchangeTickersById(id!),
   })
+
+  // const dayOptions = [7, 14, 30, 90, 180, 365]
+  // const [selectedDays, setSelectedDays] = useState(30)
+
+  // const {
+  //   data: exchangesVolumeChart,
+  //   isLoading: isLoadingVolumeChart,
+  //   error: errorVolumeChart,
+  // } = useQuery({
+  //   queryKey: ['exchangesVolumeChart', id, selectedDays],
+  //   queryFn: () => getVolumeChartById(id!, { days: selectedDays }),
+  // })
 
   const getTrustScoreColor = (score: number) => {
     if (score >= 9) return 'text-green-400 bg-green-400/20'
@@ -73,7 +87,6 @@ const ExchangeDetail: React.FC = () => {
     <div className="min-h-screen bg-gray-900 text-gray-100 p-4 md:p-8">
       <div className="container mx-auto max-w-7xl">
         <ReturnButton />
-
         {/* Header Section */}
         <ExchangeHeader
           image={exchangeDetail.image}
@@ -91,6 +104,9 @@ const ExchangeDetail: React.FC = () => {
             </TabsTrigger>
             <TabsTrigger value="markets" className={tabClass}>
               所有交易對
+            </TabsTrigger>
+            <TabsTrigger value="volume" className={tabClass}>
+              交易量走勢
             </TabsTrigger>
           </TabsList>
 
@@ -146,6 +162,45 @@ const ExchangeDetail: React.FC = () => {
               />
             )}
           </TabsContent>
+
+          {/* <TabsContent value="volume">
+            <div className="mb-4 flex flex-wrap gap-2 items-center">
+              <span className="text-gray-400 text-sm">區間：</span>
+              {dayOptions.map((d) => (
+                <button
+                  key={d}
+                  onClick={() => setSelectedDays(d)}
+                  className={`px-3 py-1 rounded-lg border text-sm font-semibold transition-colors
+                    ${
+                      selectedDays === d
+                        ? 'bg-[#8dc647] text-gray-900 border-[#8dc647]'
+                        : 'bg-gray-800 text-gray-300 border-gray-700 hover:bg-gray-700'
+                    }`}
+                >
+                  {d}天
+                </button>
+              ))}
+            </div>
+            {isLoadingVolumeChart ? (
+              <div>Loading...</div>
+            ) : errorVolumeChart ? (
+              <div>Error</div>
+            ) : (
+              exchangesVolumeChart &&
+              Array.isArray(exchangesVolumeChart) && (
+                <VolumeChart
+                  data={exchangesVolumeChart.map(([x, y]: [number, string]) => ({
+                    x:
+                      selectedDays === 1
+                        ? new Date(Number(x)).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+                        : new Date(Number(x)).toLocaleDateString(),
+                    y: Number(y),
+                  }))}
+                  xLabelType={selectedDays === 1 ? 'time' : 'date'}
+                />
+              )
+            )}
+          </TabsContent> */}
         </Tabs>
       </div>
     </div>
