@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { BarChart3, ArrowUp, ArrowDown } from 'lucide-react'
 import ReturnButton from '@/components/ReturnButton'
 import { useParams } from 'react-router-dom'
@@ -9,6 +10,11 @@ import SparkLineChart from './components/SparkLineChart'
 
 function DetailCoins() {
   const { id } = useParams<{ id: string }>()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   const { data, isLoading, error } = useQuery({
     queryKey: ['coinsById', id],
     queryFn: () => getCoinsById(id as string),

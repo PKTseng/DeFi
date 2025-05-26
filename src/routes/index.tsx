@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
 import MainLayout from '@/components/layout/mainLayout'
 import Markets from '@/pages/Market/index'
+import CoinsDetail from '@/pages/Market/Detail/index'
 import Trending from '@/pages/Trending/index'
 import TrendingCoinDetail from '@/pages/Trending/CoinDetail/index'
 import TrendingNftDetail from '@/pages/Trending/NftDetail/index'
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: 'market',
         element: <Markets />,
+      },
+      {
+        path: 'coins/:id',
+        element: <CoinsDetail />,
       },
       {
         path: 'trending',
