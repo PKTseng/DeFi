@@ -9,15 +9,15 @@ import CoinMarketStats from './components/CoinMarketStats'
 import CoinDescription from './components/CoinDescription'
 import CoinLinks from './components/CoinLinks'
 import CoinCategories from './components/CoinCategories'
-// import { coinsDetail as data } from '@/mock/coins/coinsDetail'
+import { coinsDetail as data } from '@/mock/coins/coinsDetail'
 
 const TrendingCoinDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>()
 
-  const { data, isLoading, error } = useQuery({
-    queryKey: ['coinDetail', id],
-    queryFn: () => getCoinsById(id as string),
-  })
+  // const { data, isLoading, error } = useQuery({
+  //   queryKey: ['coinDetail', id],
+  //   queryFn: () => getCoinsById(id as string),
+  // })
 
   const formatPrice = (price: number | undefined | null, currency = 'usd') => {
     if (price === undefined || price === null) return 'N/A'
@@ -36,17 +36,17 @@ const TrendingCoinDetail: React.FC = () => {
     return <span className={color}>{value}%</span>
   }
 
-  if (isLoading) {
-    return <div>Loading...</div>
-  }
+  // if (isLoading) {
+  //   return <div>Loading...</div>
+  // }
 
-  if (error) {
-    return <div>Error: {error.message}</div>
-  }
+  // if (error) {
+  //   return <div>Error: {error.message}</div>
+  // }
 
-  if (!data) {
-    return <div>暫無資料</div>
-  }
+  // if (!data) {
+  //   return <div>暫無資料</div>
+  // }
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 p-4 md:p-8">

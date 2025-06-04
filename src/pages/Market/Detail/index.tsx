@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query'
 import { getCoinsById } from '@/api/coins'
 import InfoCard from './components/InfoCard'
 import SparkLineChart from './components/SparkLineChart'
-// import { coinsDetail as data } from '@/mock/coins/coinsDetail'
+import { coinsDetail as data } from '@/mock/coins/coinsDetail'
 
 function DetailCoins() {
   const { id } = useParams<{ id: string }>()
@@ -15,22 +15,22 @@ function DetailCoins() {
     window.scrollTo(0, 0)
   }, [])
 
-  const { data, isLoading, error } = useQuery({
-    queryKey: ['coinsById', id],
-    queryFn: () => getCoinsById(id as string),
-  })
+  // const { data, isLoading, error } = useQuery({
+  //   queryKey: ['coinsById', id],
+  //   queryFn: () => getCoinsById(id as string),
+  // })
 
-  if (isLoading) {
-    return <div className="text-center text-gray-400">Loading...</div>
-  }
+  // if (isLoading) {
+  //   return <div className="text-center text-gray-400">Loading...</div>
+  // }
 
-  if (error) {
-    return <div className="text-center text-red-500">Error: {error.message}</div>
-  }
+  // if (error) {
+  //   return <div className="text-center text-red-500">Error: {error.message}</div>
+  // }
 
-  if (!data) {
-    return <div className="text-center text-gray-400">Loading...</div>
-  }
+  // if (!data) {
+  //   return <div className="text-center text-gray-400">Loading...</div>
+  // }
 
   return (
     <div className="min-h-screen text-white p-6 container mx-auto">

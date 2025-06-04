@@ -3,14 +3,14 @@ import { useQuery } from '@tanstack/react-query'
 import { getCoinsMarket } from '@/api/coins'
 import { useNavigate } from 'react-router-dom'
 import { Table, TableCaption, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table'
-// import { getCoinsMarketData as data } from '@/mock/coins/coinList'
+import { getCoinsMarketData as data } from '@/mock/coins/coinList'
 
 export function CoinMarketTable() {
   const navigate = useNavigate()
-  const { data } = useQuery({
-    queryKey: ['coinsMarket'],
-    queryFn: () => getCoinsMarket({ vs_currency: 'usd', order: 'market_cap_desc', page: 1, per_page: 100 }),
-  })
+  // const { data } = useQuery({
+  //   queryKey: ['coinsMarket'],
+  //   queryFn: () => getCoinsMarket({ vs_currency: 'usd', order: 'market_cap_desc', page: 1, per_page: 100 }),
+  // })
 
   return (
     <div className="rounded-xl bg-gray-800 p-6">

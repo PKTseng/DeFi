@@ -12,31 +12,32 @@ import ExchangeSocialLinks from './ExchangeSocialLinks'
 import ExchangeInfo from './ExchangeInfo'
 import ExchangeOtherLinks from './ExchangeOtherLinks'
 import ExchangeAllTickersTable from './ExchangeAllTickersTable'
+import { exchangesDetailMock as exchangeDetail } from '@/mock/exchanges/detail'
+import { exchangeTickers } from '@/mock/exchanges/tickers'
+
 // import VolumeChart from './VolumeChart'
-// import { exchangesDetailMock as exchangeDetail } from '@/mock/exchanges/detail'
-// import { exchangeTickers } from '@/mock/exchanges/tickers'
 // import { exchangesVolumeChart } from '@/mock/exchanges/volumeChart'
 
 const ExchangeDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>()
 
-  const {
-    data: exchangeDetail,
-    isLoading: isLoadingDetail,
-    error: errorDetail,
-  } = useQuery({
-    queryKey: ['exchangeDetail', id],
-    queryFn: () => getExchangeById(id!),
-  })
+  // const {
+  //   data: exchangeDetail,
+  //   isLoading: isLoadingDetail,
+  //   error: errorDetail,
+  // } = useQuery({
+  //   queryKey: ['exchangeDetail', id],
+  //   queryFn: () => getExchangeById(id!),
+  // })
 
-  const {
-    data: exchangeTickers,
-    isLoading: isLoadingTickers,
-    error: errorTickers,
-  } = useQuery({
-    queryKey: ['exchangeTickers', id],
-    queryFn: () => getExchangeTickersById(id!),
-  })
+  // const {
+  //   data: exchangeTickers,
+  //   isLoading: isLoadingTickers,
+  //   error: errorTickers,
+  // } = useQuery({
+  //   queryKey: ['exchangeTickers', id],
+  //   queryFn: () => getExchangeTickersById(id!),
+  // })
 
   // const dayOptions = [7, 14, 30, 90, 180, 365]
   // const [selectedDays, setSelectedDays] = useState(30)
@@ -78,10 +79,10 @@ const ExchangeDetail: React.FC = () => {
   const safeString = (s: string | null | undefined) => s ?? undefined
   const safeBool = (b: boolean | null | undefined) => b ?? undefined
 
-  if (isLoadingDetail || isLoadingTickers) return <div>Loading...</div>
-  if (errorDetail) return <div>Error: {errorDetail.message}</div>
-  if (errorTickers) return <div>Error: {errorTickers.message}</div>
-  if (!exchangeDetail) return <div>暫無資料</div>
+  // if (isLoadingDetail || isLoadingTickers) return <div>Loading...</div>
+  // if (errorDetail) return <div>Error: {errorDetail.message}</div>
+  // if (errorTickers) return <div>Error: {errorTickers.message}</div>
+  // if (!exchangeDetail) return <div>暫無資料</div>
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 p-4 md:p-8">
