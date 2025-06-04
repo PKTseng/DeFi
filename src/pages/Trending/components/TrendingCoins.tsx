@@ -1,6 +1,5 @@
 import React from 'react'
 import type { TopCoin } from '@/types/trending'
-import { ArrowDown, ArrowUp } from 'lucide-react'
 import Title from '@/components/Title'
 import { useNavigate } from 'react-router-dom'
 
@@ -43,16 +42,11 @@ const TrendingCoins: React.FC<TrendingCoinsProps> = ({ coins }) => {
                   分數: <span className="text-white font-semibold">{coin.item.score}</span>
                 </span>
                 {coin.item.data && (
-                  <span className="text-xs text-gray-400 flex items-center gap-1">
+                  <span className="text-xs text-gray-400">
                     24h漲跌:
-                    {coin.item.data.price_change_percentage_24h?.btc > 0 ? (
-                      <ArrowUp className="inline-block w-4 h-4 text-green-400" />
-                    ) : (
-                      <ArrowDown className="inline-block w-4 h-4 text-red-400" />
-                    )}
                     <span
                       className={
-                        coin.item.data.price_change_percentage_24h?.btc > 0 ? 'text-green-400' : 'text-red-400'
+                        coin.item.data.price_change_percentage_24h?.btc > 0 ? 'text-[#8dc647]' : 'text-red-400'
                       }
                     >
                       {coin.item.data.price_change_percentage_24h?.btc?.toFixed(2)}%

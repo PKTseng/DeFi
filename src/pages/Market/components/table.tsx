@@ -1,4 +1,3 @@
-import { ArrowDown, ArrowUp, Star } from 'lucide-react'
 import { useQuery } from '@tanstack/react-query'
 import { getCoinsMarket } from '@/api/coins'
 import { useNavigate } from 'react-router-dom'
@@ -39,14 +38,11 @@ export function CoinMarketTable() {
               >
                 {/* 排名 */}
                 <TableCell className="py-4 pl-2 text-sm font-mono text-gray-400 font-bold text-right">
-                  <div className="flex items-center gap-2">
-                    <Star className="h-4 w-4 text-gray-500 group-hover:text-yellow-400 cursor-pointer" />
-                    <span>{item.market_cap_rank}</span>
-                  </div>
+                  {item.market_cap_rank}
                 </TableCell>
                 {/* 貨幣 */}
                 <TableCell className="py-4">
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2">
                     <img
                       src={item.image}
                       alt={item.name}
@@ -67,17 +63,10 @@ export function CoinMarketTable() {
                 {/* 24小時漲跌幅 */}
                 <TableCell
                   className={`py-4 text-right font-medium ${
-                    item.price_change_percentage_24h >= 0 ? 'text-green-500' : 'text-red-500'
+                    item.price_change_percentage_24h >= 0 ? 'text-[#8dc647]' : 'text-red-500'
                   }`}
                 >
-                  <div className="flex items-center justify-end">
-                    {item.price_change_percentage_24h >= 0 ? (
-                      <ArrowUp className="mr-1 h-6 w-6" />
-                    ) : (
-                      <ArrowDown className="mr-1 h-6 w-6" />
-                    )}
-                    {Math.abs(item.price_change_percentage_24h).toFixed(2)}%
-                  </div>
+                  {Math.abs(item.price_change_percentage_24h).toFixed(2)}%
                 </TableCell>
                 {/* 24小時交易量 */}
                 <TableCell className="py-4 text-right font-medium text-white">
