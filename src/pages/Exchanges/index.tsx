@@ -64,7 +64,7 @@ function Exchanges() {
                   <TableCell className="font-bold text-white text-md gap-2">
                     {item.name}
                     {item.has_trading_incentive && (
-                      <span className="ml-2 px-2 py-0.5 bg-orange-500 text-white text-xs rounded-full font-semibold">
+                      <span className="ml-2 px-2 py-0.5 bg-[#8dc647] text-white text-xs rounded-full font-semibold">
                         交易獎勵
                       </span>
                     )}
@@ -72,7 +72,7 @@ function Exchanges() {
                   <TableCell className="text-gray-300 text-base">{item.country}</TableCell>
                   <TableCell className="text-gray-300 text-base">{item.year_established}</TableCell>
                   <TableCell>
-                    <span className="inline-block px-4 py-1 rounded-full bg-[#23272f] text-[#8dc647] font-bold text-lg shadow">
+                    <span className="inline-block px-4 py-1 rounded-full bg-gray-700 text-[#8dc647] font-bold text-lg shadow">
                       {item.trust_score}
                     </span>
                   </TableCell>
@@ -85,7 +85,7 @@ function Exchanges() {
                       href={item.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-blue-400 hover:text-blue-600 font-semibold focus:outline-none focus:ring-2 focus:ring-blue-300 transition-colors"
+                      className="text-[#8dc647] hover:underline font-semibold focus:outline-none focus:ring-2 focus:ring-[#8dc647]/50 transition-colors"
                       style={{ textDecoration: 'none' }}
                       onClick={(e) => e.stopPropagation()}
                     >

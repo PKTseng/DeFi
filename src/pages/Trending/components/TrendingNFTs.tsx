@@ -1,6 +1,5 @@
 import React from 'react'
 import type { NftDetail } from '@/types/trending'
-import { ArrowDown, ArrowUp } from 'lucide-react'
 import Title from '@/components/Title'
 import { useNavigate } from 'react-router-dom'
 
@@ -47,16 +46,11 @@ const TrendingNFTs: React.FC<TrendingNFTsProps> = ({ nfts }) => {
                 地板價: <span className="text-white font-semibold">{nft.floor_price_in_native_currency}</span>
               </span>
               <span
-                className="text-xs text-gray-400 truncate w-full max-w-[120px] text-center flex items-center justify-center gap-1"
+                className="text-xs text-gray-400 truncate w-full max-w-[120px] text-center"
                 title={String(nft.floor_price_24h_percentage_change)}
               >
                 24h變化:
-                {nft.floor_price_24h_percentage_change > 0 ? (
-                  <ArrowUp className="inline-block w-4 h-4 text-green-400" />
-                ) : (
-                  <ArrowDown className="inline-block w-4 h-4 text-red-400" />
-                )}
-                <span className={nft.floor_price_24h_percentage_change > 0 ? 'text-green-400' : 'text-red-400'}>
+                <span className={nft.floor_price_24h_percentage_change > 0 ? 'text-[#8dc647]' : 'text-red-400'}>
                   {nft.floor_price_24h_percentage_change.toFixed(2)}%
                 </span>
               </span>
